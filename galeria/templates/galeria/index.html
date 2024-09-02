@@ -1,0 +1,58 @@
+<!-- galeria/templates/galeria/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Piscinas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gallery-item {
+            padding: 15px;
+            text-align: left;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .gallery .info {
+            max-width: 100%;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Galería de Piscinas</h1>
+        <div class="row gallery">
+            {% for imagen in imagenes %}
+                <div class="col-md-3 gallery-item">
+                    <img src="{{ imagen.imagen.url }}" alt="{{ imagen.titulo }}" class="img-thumbnail">
+                    <div class="info">
+                        <p><strong>Nombre:</strong> {{ imagen.nombre }}</p>
+                        <p><strong>Tamaño:</strong> {{ imagen.tamaño }}</p>
+                        <p><strong>Precio:</strong> ${{ imagen.precio }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
